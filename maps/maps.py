@@ -7,7 +7,7 @@ class MapExercise:
         movies_with_rating = filter(lambda movie: movie["rating_kinopoisk"], list_of_movies)
         filtered_movies = filter(
             lambda movie: float(movie["rating_kinopoisk"]) > 0
-            and len(movie["country"].split(",")) > 1,
+            and movie["country"].count(",") >= 1,
             movies_with_rating,
         )
         ratings = list(map(lambda movie: float(movie["rating_kinopoisk"]), filtered_movies))
