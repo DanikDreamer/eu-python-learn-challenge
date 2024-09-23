@@ -19,14 +19,14 @@ def receive_message(connection: socket.socket) -> None:
 def send_message(connection: socket.socket, username: str) -> None:
     while True:
         message = input()
-        if message == '/exit':
+        if message == "/exit":
             break
-        full_message = f'{username}: {message}'
+        full_message = f"{username}: {message}"
         connection.sendall(full_message.encode())
     connection.close()
 
 
-username = input('Enter your name: ')
+username = input("Enter your name: ")
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     threading.Thread(target=receive_message, args=(s,), daemon=True).start()
