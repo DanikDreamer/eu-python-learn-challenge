@@ -1,6 +1,8 @@
+from typing import Optional
+
 class ListExercise:
     @staticmethod
-    def get_max_num(input_list: list[int]) -> int:
+    def get_max_num(input_list: list[int]) -> Optional[int]:
         if not input_list:
             return None
         max_num = input_list[0]
