@@ -50,13 +50,13 @@ FOREIGN KEY (manager_id) REFERENCES "Employees"(id);
 
 SELECT * FROM "Employees"
 WHERE email IS NULL 
-   OR email NOT LIKE '%dualbootpartners.com';
+   OR email NOT LIKE '%@dualbootpartners.com';
 
 
 Получить список работников, нанятых в последние 30 дней:
 
 SELECT * FROM "Employees"
-WHERE hire_date >= CURDATE - INTERVAL '30 days';
+WHERE hire_date >= CURRENT_DATE - INTERVAL '30 days';
 
 
 Найти максимальную и минимальную зарплату по каждому департаменту:
