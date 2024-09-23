@@ -23,16 +23,24 @@ class FlaskExercise:
             user = FlaskExercise.users.get(name)
             if user:
                 return jsonify({"data": f"My name is {user['name']}"}), 200
-            else:
-                return "", 404
+
+            return "", 404
 
         @app.patch("/user/<name>")
         def update_user(name):
+            user = FlaskExercise.users.get(name)
+            if not user:
+                return "", 404
+
             data = request.get_json()
             new_name = data["name"]
             return jsonify({"data": f"My name is {new_name}"}), 200
 
         @app.delete("/user/<name>")
         def delete_user(name):
+            user = FlaskExercise.users.get(name)
+            if not user:
+                return "", 404
+
             FlaskExercise.users.pop(name)
             return "", 204
